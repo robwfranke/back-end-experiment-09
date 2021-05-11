@@ -1,5 +1,6 @@
 package nl.lotrac.bv.service;
 
+import nl.lotrac.bv.exceptions.CustomernameNotPresentException;
 import nl.lotrac.bv.model.Customer;
 
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
@@ -25,11 +26,9 @@ public class CustomerServiceImpl implements CustomerService {
     private PasswordEncoder passwordEncoder;
 
 
-
 //    public boolean customerExists(String customername) {
 //        return customerRepository.existsById(customername);
 //    }
-
 
 
     @Override
@@ -40,26 +39,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomerName(String customername) {
-
-//       Customer customer1 =customerRepository.getCustomerByCustomername(customer);
-//        System.out.println("customer1");
-//        return customer1.getCustomername();
-
         System.out.println("CustomerServiceImpl getCustomerName");
-
         Customer customer = customerRepository.getCustomerByCustomername(customername);
         System.out.println("customer1");
+        if (customer == null)
+            throw new CustomernameNotPresentException("customer does not exists");
 
         return customer;
 
 
     }
 
-
-//    customerRepository.getCustomerByCustomername(customer.getCustomername()
-
-
-//    getCustomerByCustomername
 
     @Override
     public Customer getCustomer(Long id) {
@@ -77,7 +67,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
 
     public String createNewCustomer(Customer customer) {
-
 
 
         System.out.println("CustomerService Impl create newCustomer");

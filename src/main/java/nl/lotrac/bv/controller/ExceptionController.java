@@ -29,17 +29,22 @@ public class ExceptionController {
         return ResponseEntity.badRequest().build();
     }
 
+
+    @ExceptionHandler(value = UsernameExistsException.class)
+    public ResponseEntity<Object> exception(UsernameExistsException exception) {
+        String message=exception.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
+    }
+
+
     @ExceptionHandler(value = CustomernameExistsException.class)
     public ResponseEntity<MessageFrontEnd> exception(CustomernameExistsException exception){
         return new ResponseEntity<>(new MessageFrontEnd(exception.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(value = UsernameExistsException.class)
-    public ResponseEntity<Object> exception(UsernameExistsException exception) {
-        String message=exception.getMessage();
-//        return ResponseEntity.badRequest().build();
-
-        return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
+    @ExceptionHandler(value = CustomernameNotPresentException.class)
+    public ResponseEntity<MessageFrontEnd> exception(CustomernameNotPresentException exception){
+        return new ResponseEntity<>(new MessageFrontEnd(exception.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 
 

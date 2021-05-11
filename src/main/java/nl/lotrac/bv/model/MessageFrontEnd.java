@@ -7,5 +7,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class MessageFrontEnd {
 
-    private final String boodschap;
+    private final String messageToFrontEnd;
 }

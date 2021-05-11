@@ -8,5 +8,4 @@ public class CustomernameExistsException extends RuntimeException {
     }
     public CustomernameExistsException(String message) {super(message);
     }
-//System.out.println("UsernameExistsException");
 }

@@ -49,14 +49,6 @@ public class Customer {
     @Column
     private boolean enabled = true;
 
-//    customer haalt spring uit veld customer in de @MayToOne in order
-//
-//    @ManyToOne
-//    Customer customer;
-
-//    Vegeet niet getter en setter van List<Order> aan te maken
-//
-
     @OneToMany (mappedBy = "customer")
     private List<Order> orders;
 
