@@ -37,13 +37,13 @@ public class ExceptionController {
     }
 
 
-    @ExceptionHandler(value = CustomernameExistsException.class)
-    public ResponseEntity<MessageFrontEnd> exception(CustomernameExistsException exception){
+    @ExceptionHandler(value = NameExistsException.class)
+    public ResponseEntity<MessageFrontEnd> exception(NameExistsException exception){
         return new ResponseEntity<>(new MessageFrontEnd(exception.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(value = CustomernameNotPresentException.class)
-    public ResponseEntity<MessageFrontEnd> exception(CustomernameNotPresentException exception){
+    @ExceptionHandler(value = NameNotFoundException.class)
+    public ResponseEntity<MessageFrontEnd> exception(NameNotFoundException exception){
         return new ResponseEntity<>(new MessageFrontEnd(exception.getMessage()), HttpStatus.UNAUTHORIZED);
     }
 

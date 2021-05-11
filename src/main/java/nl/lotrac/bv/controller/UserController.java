@@ -31,10 +31,14 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
-    @GetMapping(value = "/{username}")
+
+
+    @GetMapping(value = "/username/{username}")
     public ResponseEntity<Object> getUser(@PathVariable("username") String username) {
         return ResponseEntity.ok().body(userService.getUser(username));
     }
+
+
 
     @PostMapping(value = "")
     public ResponseEntity<Object> createUser(@RequestBody User user) {

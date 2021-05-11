@@ -1,6 +1,7 @@
 package nl.lotrac.bv.service;
 
 
+import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Authority;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.utils.RandomStringGenerator;
@@ -16,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -64,8 +64,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUser(String username) {
-        return userRepository.findById(username);
+    public User getUser(String username) {
+        System.out.println("UserServiceImpl getUser");
+        User user = userRepository.getUserByUsername(username);
+
+        if (user == null)
+            throw new NameNotFoundException("user does not exists");
+
+
+        return user;
     }
 
     @Override

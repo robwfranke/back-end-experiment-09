@@ -1,10 +1,10 @@
 package nl.lotrac.bv.service;
 
-import nl.lotrac.bv.exceptions.CustomernameNotPresentException;
+import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Customer;
 
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
-import nl.lotrac.bv.exceptions.CustomernameExistsException;
+import nl.lotrac.bv.exceptions.NameExistsException;
 
 import nl.lotrac.bv.repository.CustomerRepository;
 
@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.getCustomerByCustomername(customername);
         System.out.println("customer1");
         if (customer == null)
-            throw new CustomernameNotPresentException("customer does not exists");
+            throw new NameNotFoundException("customer does not exists");
 
         return customer;
 
@@ -72,7 +72,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("CustomerService Impl create newCustomer");
 
         if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
-            throw new CustomernameExistsException("customer exists");
+            throw new NameExistsException("customer exists");
         String randomString = RandomStringGenerator.generateAlphaNumeric(20);
         customer.setApikey(randomString);
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
