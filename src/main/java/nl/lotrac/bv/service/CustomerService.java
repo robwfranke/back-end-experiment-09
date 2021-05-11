@@ -2,10 +2,7 @@ package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.model.Customer;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 
 public interface CustomerService {
@@ -17,7 +14,7 @@ public interface CustomerService {
 
     public abstract  String createNewCustomer(Customer customer);
 
-    public abstract Optional<Customer>getCustomerName(String customername);
+    public abstract String getCustomerName(String customer);
 
 
 
