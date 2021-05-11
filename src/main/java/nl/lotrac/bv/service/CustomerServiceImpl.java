@@ -5,6 +5,7 @@ import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
 import nl.lotrac.bv.exceptions.CustomernameExistsException;
 
+import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findAll();
     }
 
+    @Override
+    public Optional<Customer> getCustomerName(String customername) {return customerRepository.findById(getCustomerName(customername));
+    }
+
+//    getCustomerByCustomername
 
     @Override
     public Customer getCustomer(Long id) {
