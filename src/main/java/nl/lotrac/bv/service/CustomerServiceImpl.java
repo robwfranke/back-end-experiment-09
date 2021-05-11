@@ -39,10 +39,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String getCustomerName(String customer) {
+    public Customer getCustomerName(String customername) {
 
-       Customer customer1 =customerRepository.getCustomerByCustomername(customer);
-        return customer1.getCustomername();    }
+//       Customer customer1 =customerRepository.getCustomerByCustomername(customer);
+//        System.out.println("customer1");
+//        return customer1.getCustomername();
+
+        System.out.println("CustomerServiceImpl getCustomerName");
+
+        Customer customer = customerRepository.getCustomerByCustomername(customername);
+        System.out.println("customer1");
+
+        return customer;
+
+
+    }
 
 
 //    customerRepository.getCustomerByCustomername(customer.getCustomername()

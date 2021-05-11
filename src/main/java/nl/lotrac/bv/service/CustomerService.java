@@ -14,7 +14,7 @@ public interface CustomerService {
 
     public abstract  String createNewCustomer(Customer customer);
 
-    public abstract String getCustomerName(String customer);
+    public abstract Customer getCustomerName(String customer);
 
 
 

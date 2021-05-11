@@ -38,7 +38,7 @@ public class CustomerController {
       return new ResponseEntity<>(customerService.getCustomer(id),HttpStatus.OK) ;
 }
 
-    @GetMapping(value = "/{customername}")
+    @GetMapping(value = "/name/{customername}")
     public ResponseEntity<Object> getCustomerName(@PathVariable("customername") String customername) {
         return ResponseEntity.ok().body(customerService.getCustomerName(customername));
     }
