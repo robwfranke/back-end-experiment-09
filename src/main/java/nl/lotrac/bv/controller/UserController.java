@@ -32,19 +32,17 @@ public class UserController {
     }
 
 
-
-    @GetMapping(value = "/username/{username}")
+    @GetMapping(value = "/name/{username}")
     public ResponseEntity<Object> getUser(@PathVariable("username") String username) {
         return ResponseEntity.ok().body(userService.getUser(username));
     }
 
 
-
-    @PostMapping(value = "")
+    @PostMapping(value = "/create")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
         System.out.println("UserController, createUser");
         String newUsername = userService.createUser(user);
-        MessageFrontEnd messageFrontEnd = new MessageFrontEnd("User: " + newUsername+ "  created");
+        MessageFrontEnd messageFrontEnd = new MessageFrontEnd("User: " + newUsername + "  created");
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{username}")
                 .buildAndExpand(newUsername).toUri();
 

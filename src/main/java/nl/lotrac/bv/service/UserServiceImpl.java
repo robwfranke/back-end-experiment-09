@@ -1,14 +1,10 @@
 package nl.lotrac.bv.service;
 
 
-import nl.lotrac.bv.exceptions.NameNotFoundException;
+import nl.lotrac.bv.exceptions.*;
 import nl.lotrac.bv.model.Authority;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.utils.RandomStringGenerator;
-
-import nl.lotrac.bv.exceptions.RecordNotFoundException;
-import nl.lotrac.bv.exceptions.UsernameExistsException;
-import nl.lotrac.bv.exceptions.UsernameNotFoundException;
 
 import nl.lotrac.bv.repository.UserRepository;
 
@@ -39,7 +35,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public String createUser(User user) {
         if (userRepository.existsById(user.getUsername()))
-            throw new UsernameExistsException(user.getUsername() + "  exists!!");
+//            throw new UsernameExistsException(user.getUsername() + "  exists!!");
+            throw new NameExistsException(user.getUsername() + "  exists!!");
         System.out.println("create user");
         String randomString = RandomStringGenerator.generateAlphaNumeric(20);
         user.setApikey(randomString);
@@ -50,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(String username, User newUser) {
-        if (!userRepository.existsById(username)) throw new RecordNotFoundException();
+        if (!userRepository.existsById(username)) throw new NameNotFoundException("user does not exists");
         User user = userRepository.findById(username).get();
 //        user.setPassword(newUser.getPassword());
         user.setEmail(newUser.getEmail());
@@ -89,14 +86,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Set<Authority> getAuthorities(String username) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
+        if (!userRepository.existsById(username)) throw new NameNotFoundException(username);
         User user = userRepository.findById(username).get();
         return user.getAuthorities();
     }
 
     @Override
     public void addAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
+        if (!userRepository.existsById(username)) throw new NameNotFoundException(username);
         User user = userRepository.findById(username).get();
         user.addAuthority(new Authority(username, authority));
         userRepository.save(user);
@@ -104,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void removeAuthority(String username, String authority) {
-        if (!userRepository.existsById(username)) throw new UsernameNotFoundException(username);
+        if (!userRepository.existsById(username)) throw new NameNotFoundException(username);
         User user = userRepository.findById(username).get();
         Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthority().equalsIgnoreCase(authority)).findAny().get();
         user.removeAuthority(authorityToRemove);

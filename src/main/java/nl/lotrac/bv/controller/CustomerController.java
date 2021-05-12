@@ -19,10 +19,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-//    @GetMapping(value = "")
-//    public ResponseEntity<Object> getMessage() {
-//        return new ResponseEntity<>("SECURED REST endpoint: /customers", HttpStatus.OK);
-//    }
 
     @GetMapping(value = "")
 

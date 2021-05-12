@@ -6,6 +6,7 @@ import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
 import nl.lotrac.bv.exceptions.NameExistsException;
 
+import nl.lotrac.bv.model.MessageFrontEnd;
 import nl.lotrac.bv.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
