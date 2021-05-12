@@ -15,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "orderlines")
+@Table(name = "order_lines")
 
 public class OrderLine {
 
@@ -25,11 +25,11 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String customer_reference;
 
     @Column
-    private int quantity;
+    private Integer quantity;
 
 
 
