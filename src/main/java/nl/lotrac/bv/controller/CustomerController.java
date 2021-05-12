@@ -21,9 +21,8 @@ public class CustomerController {
 
 
     @GetMapping(value = "")
-
-    public ResponseEntity<List<Customer>>getCustomers(){
-        return ResponseEntity.ok().body(customerService.getCustomers());
+    public ResponseEntity<Object>getAllCustomers(){
+        return ResponseEntity.ok().body(customerService.getAllCustomers());
     }
 
 
@@ -35,8 +34,8 @@ public class CustomerController {
 }
 
     @GetMapping(value = "/name/{customername}")
-    public ResponseEntity<Object> getCustomerName(@PathVariable("customername") String customername) {
-        return ResponseEntity.ok().body(customerService.getCustomerName(customername));
+    public ResponseEntity<Object> getOneCustomerByName(@PathVariable("customername") String customername) {
+        return ResponseEntity.ok().body(customerService.getOneCustomerByName(customername));
     }
 
 

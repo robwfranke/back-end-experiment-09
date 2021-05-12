@@ -48,23 +48,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public List<Customer> getCustomers() {
+    public List<Customer> getAllCustomers() {
 
         return customerRepository.findAll();
     }
 
-    @Override
-    public Customer getCustomerName(String customername) {
-        System.out.println("CustomerServiceImpl getCustomerName");
-        Customer customer = customerRepository.getCustomerByCustomername(customername);
-        System.out.println("customer1");
-        if (customer == null)
-            throw new NameNotFoundException("customer does not exists");
-
-        return customer;
-
-
-    }
 
 
     @Override
@@ -77,6 +65,17 @@ public class CustomerServiceImpl implements CustomerService {
         } else {
             return customer.get();
         }
+    }
+
+
+    @Override
+    public Customer getOneCustomerByName(String customername) {
+        System.out.println("CustomerServiceImpl getOneCustomerByName");
+        Customer customer = customerRepository.getCustomerByCustomername(customername);
+        System.out.println("customer1");
+        if (customer == null)
+            throw new NameNotFoundException("customer does not exists");
+        return customer;
     }
 
 

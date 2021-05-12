@@ -27,7 +27,7 @@ public class BaseController {
     }
 
 
-    @PostMapping(value="")
+    @PostMapping(value="/create")
    public ResponseEntity<Object>createNewCustomer(@RequestBody Customer customer){
 
         System.out.println("BaseController, createNewCustomer");

@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<Order> getOrders() {
+    public List<Order> getAllOrders() {
 
         return orderRepository.findAll();
     }
@@ -55,6 +55,20 @@ public class OrderServiceImpl implements OrderService {
             return order.get();
         }
     }
+
+
+
+    @Override
+    public Order getOneOrderByName(String ordername) {
+        System.out.println("OrderServiceImpl getOneOrderByName");
+        Order order = orderRepository.getOrderByOrdername(ordername);
+        System.out.println("order1");
+        if (order == null)
+            throw new NameNotFoundException("order does not exists");
+        return order;
+    }
+
+
 
 
 }

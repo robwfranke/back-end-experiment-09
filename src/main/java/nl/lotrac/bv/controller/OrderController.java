@@ -44,7 +44,7 @@ public class OrderController {
 
     @GetMapping(value = "")
     public ResponseEntity<Object> getOrders() {
-        return ResponseEntity.ok().body(orderService.getOrders());
+        return ResponseEntity.ok().body(orderService.getAllOrders());
     }
 
 
@@ -56,6 +56,10 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getOneOrderByID(id), HttpStatus.OK) ;
     }
 
+    @GetMapping(value = "/name/{ordername}")
+    public ResponseEntity<Object> getOneOrderByName(@PathVariable("ordername") String ordername) {
+        return ResponseEntity.ok().body(orderService.getOneOrderByName(ordername));
+    }
 
 
 

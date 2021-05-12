@@ -8,13 +8,13 @@ import java.util.List;
 public interface CustomerService {
 
 
-    public abstract List<Customer> getCustomers();
+    public abstract  String createNewCustomer(Customer customer);
+    public abstract List<Customer> getAllCustomers();
 
     public abstract Customer getOneCustomerByID(Long id);
 
-    public abstract  String createNewCustomer(Customer customer);
 
-    public abstract Customer getCustomerName(String customer);
+    public abstract Customer getOneCustomerByName(String customer);
 
 
 
