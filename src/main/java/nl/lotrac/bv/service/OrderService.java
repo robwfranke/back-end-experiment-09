@@ -13,7 +13,7 @@ public interface OrderService {
 
 
 
-    public abstract Order getOneOrder(Long id);
+    public abstract Order getOneOrderByID(Long id);
 
 
     String createNewOrder(Order order);

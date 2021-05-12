@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOneOrder(Long id) {
+    public Order getOneOrderByID(Long id) {
 
         System.out.println("OrderServiceImpl");
         Optional<Order> order = orderRepository.findById(id);

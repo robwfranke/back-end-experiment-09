@@ -30,8 +30,8 @@ public class CustomerController {
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Customer>getOneCustomer(@PathVariable("id")Long id){
-      return new ResponseEntity<>(customerService.getOneCustomer(id),HttpStatus.OK) ;
+    public ResponseEntity<Customer>getOneCustomerByID(@PathVariable("id")Long id){
+      return new ResponseEntity<>(customerService.getOneCustomerByID(id),HttpStatus.OK) ;
 }
 
     @GetMapping(value = "/name/{customername}")

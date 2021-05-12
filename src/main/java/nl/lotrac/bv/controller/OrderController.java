@@ -52,9 +52,13 @@ public class OrderController {
 
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Order>getOneOrder(@PathVariable("id")Long id){
-        return new ResponseEntity<>(orderService.getOneOrder(id), HttpStatus.OK) ;
+    public ResponseEntity<Order>getOneOrderByID(@PathVariable("id")Long id){
+        return new ResponseEntity<>(orderService.getOneOrderByID(id), HttpStatus.OK) ;
     }
+
+
+
+
 
 
 }
