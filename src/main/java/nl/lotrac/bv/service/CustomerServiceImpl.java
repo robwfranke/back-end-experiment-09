@@ -27,9 +27,24 @@ public class CustomerServiceImpl implements CustomerService {
     private PasswordEncoder passwordEncoder;
 
 
-//    public boolean customerExists(String customername) {
-//        return customerRepository.existsById(customername);
-//    }
+
+    @Override
+    public String createNewCustomer(Customer customer) {
+
+
+        System.out.println("CustomerService Impl create newCustomer");
+
+        if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
+            throw new NameExistsException("customer exists");
+        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
+        customer.setApikey(randomString);
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        Customer newCustomer = customerRepository.save(customer);
+        return (newCustomer.getCustomername());
+
+    }
+
+
 
 
     @Override
@@ -65,22 +80,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
-    @Override
-
-    public String createNewCustomer(Customer customer) {
-
-
-        System.out.println("CustomerService Impl create newCustomer");
-
-        if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
-            throw new NameExistsException("customer exists");
-        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
-        customer.setApikey(randomString);
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        Customer newCustomer = customerRepository.save(customer);
-        return (newCustomer.getCustomername());
-
-    }
 
 
 }

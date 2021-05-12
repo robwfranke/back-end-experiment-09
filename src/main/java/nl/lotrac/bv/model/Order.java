@@ -16,7 +16,8 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "orders")
-public class Order {
+public class
+Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,12 @@ public class Order {
     @Column(nullable = false, length = 255)
     private String status;
 
+
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     @JsonIgnore
     @ManyToOne

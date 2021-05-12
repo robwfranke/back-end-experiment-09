@@ -24,17 +24,7 @@ public class ExceptionController {
         return ResponseEntity.badRequest().build();
     }
 
-    @ExceptionHandler(value = UsernameNotFoundException.class)
-    public ResponseEntity<Object> exception(UsernameNotFoundException exception) {
-        return ResponseEntity.badRequest().build();
-    }
 
-
-    @ExceptionHandler(value = UsernameExistsException.class)
-    public ResponseEntity<Object> exception(UsernameExistsException exception) {
-        String message=exception.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
-    }
 
 
     @ExceptionHandler(value = NameExistsException.class)
