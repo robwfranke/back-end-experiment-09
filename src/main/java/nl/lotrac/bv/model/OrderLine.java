@@ -31,7 +31,9 @@ public class OrderLine {
     @Column
     private Integer quantity;
 
-
+@JsonIgnore
+    @ManyToOne
+    private Order order;
 
 
 

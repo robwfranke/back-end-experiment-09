@@ -40,5 +40,8 @@ public class Order {
     @ManyToOne
     private Customer customer;
 
+    @OneToMany (mappedBy = "order")
+    private List<OrderLine>orderLines;
+
 }
 
