@@ -15,30 +15,26 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "orders")
+@Table(name = "orderlines")
+
+public class OrderLine {
 
 
-
-public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-
     @Column(nullable = false, unique = true)
-    private String ordername;
+    private String customer_reference;
 
-    @Column(nullable = false, length = 255)
-    private String status;
-
-
+    @Column
+    private int quantity;
 
 
-    @JsonIgnore
-    @ManyToOne
-    private Customer customer;
+
+
+
+
 
 }
-
