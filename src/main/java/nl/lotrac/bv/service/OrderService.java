@@ -1,5 +1,6 @@
 package nl.lotrac.bv.service;
 
+import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.Order;
 
 import java.util.Collection;
@@ -12,7 +13,7 @@ public interface OrderService {
 
 
 
-    public abstract Optional<Order> getOrderById(long id);
+    public abstract Order getOneOrder(Long id);
 
 
     String createNewOrder(Order order);

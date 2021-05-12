@@ -2,6 +2,7 @@ package nl.lotrac.bv.service;
 
 
 import nl.lotrac.bv.exceptions.NameExistsException;
+import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
 import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.Order;
@@ -28,7 +29,6 @@ public class OrderServiceImpl implements OrderService {
 
         System.out.println("OrderService Impl create newOrder");
 
-//        if (orderRepository.getCustomerByCustomername(customer.getCustomername()) != null)
         if (orderRepository.getOrderByOrdername(order.getOrdername()) != null)
             throw new NameExistsException("order exists");
         order.setStatus("pending");
@@ -44,11 +44,16 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findAll();
     }
 
-
     @Override
-    public Optional<Order> getOrderById(long id) {
-        if (!orderRepository.existsById(id)) throw new RecordNotFoundException();
-        return orderRepository.findById(id);
+    public Order getOneOrder(Long id) {
+
+        System.out.println("OrderServiceImpl");
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isEmpty()) {
+            throw new NameNotFoundException("order does not exists");
+        } else {
+            return order.get();
+        }
     }
 
 

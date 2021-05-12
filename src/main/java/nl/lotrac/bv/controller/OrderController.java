@@ -1,9 +1,11 @@
 package nl.lotrac.bv.controller;
 
+import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.model.MessageFrontEnd;
 import nl.lotrac.bv.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -45,12 +47,14 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.getOrders());
     }
 
+
+
+
+
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> getOrder(@PathVariable("id") long id) {
-        return ResponseEntity.ok().body(orderService.getOrderById(id));
-
+    public ResponseEntity<Order>getOneOrder(@PathVariable("id")Long id){
+        return new ResponseEntity<>(orderService.getOneOrder(id), HttpStatus.OK) ;
     }
-
 
 
 }

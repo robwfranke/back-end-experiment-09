@@ -10,7 +10,7 @@ public interface CustomerService {
 
     public abstract List<Customer> getCustomers();
 
-    public abstract Customer getCustomer(Long id);
+    public abstract Customer getOneCustomer(Long id);
 
     public abstract  String createNewCustomer(Customer customer);
 
