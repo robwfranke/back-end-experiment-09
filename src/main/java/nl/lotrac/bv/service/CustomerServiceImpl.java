@@ -57,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("CustomerServiceImpl");
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isEmpty()) {
-            throw new RecordNotFoundException();
+            throw new NameNotFoundException("customer does not exists");
         } else {
             return customer.get();
         }
