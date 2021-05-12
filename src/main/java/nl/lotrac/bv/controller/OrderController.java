@@ -43,7 +43,8 @@ public class OrderController {
 
 
     @GetMapping(value = "")
-    public ResponseEntity<Object> getOrders() {
+    public ResponseEntity<Object> getAllOrders() {
+
         return ResponseEntity.ok().body(orderService.getAllOrders());
     }
 

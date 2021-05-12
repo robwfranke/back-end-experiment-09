@@ -13,8 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 
-
-@CrossOrigin(origins = "*", maxAge=3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/orderlines")
 
@@ -24,5 +23,10 @@ public class OrderLineController {
     private OrderLineService orderLineService;
 
 
+    @GetMapping(value = "")
+    public ResponseEntity<Object> getAllOrderLines() {
+
+        return ResponseEntity.ok().body(orderLineService.getAllOrderLines());
+    }
 
 }
