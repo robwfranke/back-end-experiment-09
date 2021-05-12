@@ -24,7 +24,7 @@ public class Customer {
     private long id;
 
 
-    //    @Id
+
     @Column(nullable = false, unique = true)
     private String customername;
 

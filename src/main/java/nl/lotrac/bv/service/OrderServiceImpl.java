@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
 
     @Autowired
@@ -31,21 +31,15 @@ public class OrderServiceImpl implements OrderService{
 //        if (orderRepository.getCustomerByCustomername(customer.getCustomername()) != null)
         if (orderRepository.getOrderByOrdername(order.getOrdername()) != null)
             throw new NameExistsException("order exists");
-        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
-
-
+        order.setStatus("pending");
         Order newOrder = orderRepository.save(order);
         return (newOrder.getOrdername());
 
     }
 
 
-
-
-
-
     @Override
-    public List<Order> getOrders(){
+    public List<Order> getOrders() {
 
         return orderRepository.findAll();
     }
@@ -56,7 +50,6 @@ public class OrderServiceImpl implements OrderService{
         if (!orderRepository.existsById(id)) throw new RecordNotFoundException();
         return orderRepository.findById(id);
     }
-
 
 
 }
