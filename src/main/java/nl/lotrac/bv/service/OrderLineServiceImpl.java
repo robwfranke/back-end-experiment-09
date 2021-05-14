@@ -2,6 +2,7 @@ package nl.lotrac.bv.service;
 
 
 import nl.lotrac.bv.exceptions.NameNotFoundException;
+import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.model.OrderLine;
 import nl.lotrac.bv.repository.OrderLineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,12 @@ public class OrderLineServiceImpl implements OrderLineService{
         }
     }
 
+    @Override
+    public OrderLine getOneOrderByName(String ordername) {
 
+        OrderLine orderLine=orderLineRepository.getOneOrderByName(ordername);
+        return orderLine;
+    }
 
 
 

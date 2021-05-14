@@ -27,7 +27,7 @@ public class OrderLine {
     private long id;
 
     @Column
-    private String customer_reference;
+    private String name;
 
     @Column
     private Integer quantity;
