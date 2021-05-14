@@ -8,6 +8,6 @@ public interface OrderLineRepository extends JpaRepository<OrderLine, Long> {
 
 //    OrderLine getOneOrderByName (String itemName);
 
-   OrderLine getOrderLineByKoekoek(String kooekoek);
+   OrderLine getOrderLineByItemname(String kooekoek);
 
 }

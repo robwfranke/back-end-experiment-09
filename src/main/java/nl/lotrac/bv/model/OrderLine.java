@@ -27,7 +27,7 @@ public class OrderLine {
     private long id;
 
     @Column
-    private String koekoek;
+    private String itemname;
 
     @Column
     private Integer quantity;

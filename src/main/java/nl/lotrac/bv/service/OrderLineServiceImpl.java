@@ -43,7 +43,11 @@ public class OrderLineServiceImpl implements OrderLineService{
     @Override
     public OrderLine getOneOrderLineByName(String itemname) {
 
-        OrderLine orderLine=orderLineRepository.getOrderLineByKoekoek(itemname);
+
+        OrderLine orderLine=orderLineRepository.getOrderLineByItemname(itemname);
+        if (orderLine == null)
+            throw new NameNotFoundException("orderLine does not exists");
+
         return orderLine;
     }
 
