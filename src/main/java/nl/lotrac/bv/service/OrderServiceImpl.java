@@ -26,15 +26,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public String createNewOrder(Order order) {
 
-
-        System.out.println("OrderService Impl create newOrder");
-
         if (orderRepository.getOrderByOrdername(order.getOrdername()) != null)
             throw new NameExistsException("order exists");
         order.setStatus("pending");
         Order newOrder = orderRepository.save(order);
         return (newOrder.getOrdername());
-
     }
 
 

@@ -11,15 +11,9 @@ public interface OrderService {
 
     public abstract List<Order> getAllOrders();
 
-
-
     public abstract Order getOneOrderByID(Long id);
-
-
 
     //    in repository getOrderByOrdername
     public abstract Order getOneOrderByName(String order);
-
-
 
 }

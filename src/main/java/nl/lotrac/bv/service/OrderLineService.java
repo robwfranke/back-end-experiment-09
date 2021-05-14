@@ -8,13 +8,15 @@ import java.util.List;
 
 public interface OrderLineService {
 
+   String createNewOrderLine(OrderLine orderLine);
+
    public abstract List<OrderLine> getAllOrderLines();
 
    public abstract OrderLine getOneOrderLineByID(Long id);
 
 
 
-   //    In repository staat getOrderLineByKoekoek
+   //    In repository staat getOrderLineByItemName
    public abstract OrderLine getOneOrderLineByName(String itemname);
 
 

@@ -1,6 +1,7 @@
 package nl.lotrac.bv.service;
 
 
+import nl.lotrac.bv.exceptions.NameExistsException;
 import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.model.OrderLine;
@@ -21,6 +22,25 @@ public class OrderLineServiceImpl implements OrderLineService{
 
 
     @Override
+    public String createNewOrderLine(OrderLine orderLine) {
+
+        if (orderLineRepository.getOrderLineByItemname(orderLine.getItemname()) != null)
+            throw new NameExistsException("orderLine exists");
+
+        OrderLine newOrderLine = orderLineRepository.save(orderLine);
+        return (newOrderLine.getItemname());
+    }
+
+
+
+
+
+
+
+
+
+
+    @Override
     public List<OrderLine> getAllOrderLines(){
 
         return orderLineRepository.findAll();
@@ -29,7 +49,6 @@ public class OrderLineServiceImpl implements OrderLineService{
     @Override
     public OrderLine getOneOrderLineByID(Long id) {
 
-        System.out.println("OrderLineServiceImpl");
         Optional<OrderLine> orderLine = orderLineRepository.findById(id);
         if (orderLine.isEmpty()) {
             throw new NameNotFoundException("orderLine does not exists");
@@ -39,10 +58,9 @@ public class OrderLineServiceImpl implements OrderLineService{
     }
 
 
-    //    In repository staat getOrderLineByKoekoek
+    //    In repository staat getOrderLineByItemName
     @Override
     public OrderLine getOneOrderLineByName(String itemname) {
-
 
         OrderLine orderLine=orderLineRepository.getOrderLineByItemname(itemname);
         if (orderLine == null)

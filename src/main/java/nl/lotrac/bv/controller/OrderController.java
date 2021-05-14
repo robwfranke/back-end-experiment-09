@@ -27,13 +27,11 @@ public class OrderController {
     @PostMapping(value="/create")
     public ResponseEntity<Object>createNewOrder(@RequestBody Order order){
 
-        System.out.println("OrderController, createNewOrder");
-
-        String newOrderName= orderService.createNewOrder(order);
+          String newOrderName= orderService.createNewOrder(order);
 
         MessageFrontEnd message = new MessageFrontEnd("Order: " + newOrderName+ "  created");
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{ordername}")
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{create}")
                 .buildAndExpand(newOrderName).toUri();
 
         return ResponseEntity.created(location).body(message);
