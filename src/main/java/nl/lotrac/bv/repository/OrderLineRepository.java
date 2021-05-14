@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderLineRepository extends JpaRepository<OrderLine, Long> {
 
-    OrderLine getOneOrderByName (String Orderline);
+//    OrderLine getOneOrderByName (String itemName);
+
+   OrderLine getOrderLineByKoekoek(String kooekoek);
 
 }

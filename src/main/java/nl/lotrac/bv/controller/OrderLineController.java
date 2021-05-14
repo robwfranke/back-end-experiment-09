@@ -31,6 +31,12 @@ public class OrderLineController {
 
 
 
+//    In repository staat getOrderLineByKoekoek
+
+    @GetMapping(value = "/name/{ordername}")
+    public ResponseEntity<Object> getOneOrderLineByName(@PathVariable("ordername") String ordername) {
+        return ResponseEntity.ok().body(orderLineService.getOneOrderLineByName(ordername));
+    }
 
 
 

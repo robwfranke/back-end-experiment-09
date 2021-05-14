@@ -12,7 +12,10 @@ public interface OrderLineService {
 
    public abstract OrderLine getOneOrderLineByID(Long id);
 
-   public abstract OrderLine getOneOrderByName(String order);
+
+
+   //    In repository staat getOrderLineByKoekoek
+   public abstract OrderLine getOneOrderLineByName(String itemname);
 
 
 }

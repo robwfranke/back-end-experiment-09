@@ -57,6 +57,9 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getOneOrderByID(id), HttpStatus.OK) ;
     }
 
+
+//    in repository getOrderByOrdername
+
     @GetMapping(value = "/name/{ordername}")
     public ResponseEntity<Object> getOneOrderByName(@PathVariable("ordername") String ordername) {
         return ResponseEntity.ok().body(orderService.getOneOrderByName(ordername));

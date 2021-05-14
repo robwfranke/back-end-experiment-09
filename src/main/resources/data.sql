@@ -32,10 +32,10 @@ INSERT INTO orders (ordername, status, customer_id) VALUES ('order_3', 'pending'
 INSERT INTO orders (ordername, status, customer_id) VALUES ('order_4', 'closed','1');
 
 
-INSERT INTO order_lines (customer_reference, quantity, order_id) VALUES ('1001',13,2);
-INSERT INTO order_lines (customer_reference, quantity, order_id) VALUES ('2001', 1,2);
-INSERT INTO order_lines (customer_reference, quantity, order_id) VALUES ('3001', 3,2);
-INSERT INTO order_lines (customer_reference, quantity, order_id) VALUES ('4001', 6,1);
+INSERT INTO order_lines (koekoek, quantity, order_id) VALUES ('1001',13,2);
+INSERT INTO order_lines (koekoek, quantity, order_id) VALUES ('2001', 1,2);
+INSERT INTO order_lines (koekoek, quantity, order_id) VALUES ('3001', 3,2);
+INSERT INTO order_lines (koekoek, quantity, order_id) VALUES ('4001', 6,1);
 --
 --
 -- INSERT INTO jobs (job_name, department) VALUES ('voordraaien', 'draai afdeling');

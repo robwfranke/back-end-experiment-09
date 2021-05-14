@@ -38,10 +38,12 @@ public class OrderLineServiceImpl implements OrderLineService{
         }
     }
 
-    @Override
-    public OrderLine getOneOrderByName(String ordername) {
 
-        OrderLine orderLine=orderLineRepository.getOneOrderByName(ordername);
+    //    In repository staat getOrderLineByKoekoek
+    @Override
+    public OrderLine getOneOrderLineByName(String itemname) {
+
+        OrderLine orderLine=orderLineRepository.getOrderLineByKoekoek(itemname);
         return orderLine;
     }
 
