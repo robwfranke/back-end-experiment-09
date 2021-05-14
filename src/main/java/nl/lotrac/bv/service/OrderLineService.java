@@ -8,5 +8,4 @@ public interface OrderLineService {
 
    public abstract List<OrderLine> getAllOrderLines();
 
-
 }

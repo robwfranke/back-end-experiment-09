@@ -1,7 +1,21 @@
 package nl.lotrac.bv.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
+
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+
+
+
 
 @Entity
 @IdClass(AuthorityKey.class)
