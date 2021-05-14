@@ -1,12 +1,16 @@
 package nl.lotrac.bv.service;
 
 
+import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.OrderLine;
 import nl.lotrac.bv.repository.OrderLineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+
 
 @Service
 public class OrderLineServiceImpl implements OrderLineService{
@@ -20,5 +24,22 @@ public class OrderLineServiceImpl implements OrderLineService{
 
         return orderLineRepository.findAll();
     }
+
+    @Override
+    public OrderLine getOneOrderLineByID(Long id) {
+
+        System.out.println("OrderLineServiceImpl");
+        Optional<OrderLine> orderLine = orderLineRepository.findById(id);
+        if (orderLine.isEmpty()) {
+            throw new NameNotFoundException("orderLine does not exists");
+        } else {
+            return orderLine.get();
+        }
+    }
+
+
+
+
+
 
 }

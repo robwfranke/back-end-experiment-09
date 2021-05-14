@@ -1,4 +1,6 @@
 package nl.lotrac.bv.model;
+
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,10 +14,11 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "customers")
 @EqualsAndHashCode
 @ToString
+
+@Entity
+@Table(name = "customers")
 public class Customer {
 
 

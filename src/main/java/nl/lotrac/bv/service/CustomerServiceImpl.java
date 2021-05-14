@@ -1,22 +1,18 @@
 package nl.lotrac.bv.service;
 
+import nl.lotrac.bv.exceptions.NameExistsException;
 import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Customer;
-
-import nl.lotrac.bv.exceptions.RecordNotFoundException;
-import nl.lotrac.bv.exceptions.NameExistsException;
-
-import nl.lotrac.bv.model.MessageFrontEnd;
 import nl.lotrac.bv.repository.CustomerRepository;
-
+import nl.lotrac.bv.utils.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import nl.lotrac.bv.utils.RandomStringGenerator;
-
 import java.util.List;
 import java.util.Optional;
+
+
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

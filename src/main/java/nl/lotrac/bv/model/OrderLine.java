@@ -14,9 +14,10 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode
 @ToString
+
+
 @Entity
 @Table(name = "order_lines")
-
 public class OrderLine {
 
 
