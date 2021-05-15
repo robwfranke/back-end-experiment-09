@@ -2,6 +2,7 @@ package nl.lotrac.bv.controller;
 
 import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.MessageFrontEnd;
+import nl.lotrac.bv.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,16 +29,16 @@ public class BaseController {
 
 
     @PostMapping(value="/create")
-   public ResponseEntity<Customer>createNewCustomer(@RequestBody Customer customer){
+   public ResponseEntity<User>createNewCustomer(@RequestBody User user){
 
         System.out.println("BaseController, createNewCustomer");
 
-        Customer newCustomername= customerService.createNewCustomer(customer);
+        User newCustomername= customerService.createNewCustomer(user);
 
 //        MessageFrontEnd message = new MessageFrontEnd("Customer: " + newCustomername+ "  created");
 
 //        hier adres op geven waar je customer kunt opvragen
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/customers/name/" + newCustomername.getCustomername())
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/users/name/" + newCustomername.getUsername())
                 .buildAndExpand(newCustomername).toUri();
 
   return ResponseEntity.created(location).body(newCustomername);

@@ -1,6 +1,7 @@
 package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.model.Customer;
+import nl.lotrac.bv.model.User;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
 public interface CustomerService {
 
 
-    public abstract Customer createNewCustomer(Customer customer);
+    public abstract User createNewCustomer(User user);
 
     public abstract List<Customer> getAllCustomers();
 

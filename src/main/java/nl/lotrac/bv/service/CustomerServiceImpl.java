@@ -3,6 +3,7 @@ package nl.lotrac.bv.service;
 import nl.lotrac.bv.exceptions.NameExistsException;
 import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Customer;
+import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.CustomerRepository;
 import nl.lotrac.bv.utils.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -23,19 +25,28 @@ public class CustomerServiceImpl implements CustomerService {
     private PasswordEncoder passwordEncoder;
 
 
+    @Autowired
+    private UserService userService;
+
+
+
 
     @Override
-    public Customer createNewCustomer(Customer customer) {
+    public User createNewCustomer(User user) {
+
+        String newUser = userService.createUser(user);
+        userService.addAuthority(newUser, "ROLE_CUSTOMER");
+
+
+
 
 
         System.out.println("CustomerService Impl create newCustomer");
 
-        if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
-            throw new NameExistsException("customer exists");
-        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        Customer newCustomer = customerRepository.save(customer);
-        return newCustomer;
+//        if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
+//            throw new NameExistsException("customer exists");
+
+        return userService.getUser(newUser);
 
     }
 
