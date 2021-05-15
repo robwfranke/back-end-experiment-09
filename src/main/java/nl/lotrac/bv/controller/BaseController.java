@@ -28,18 +28,19 @@ public class BaseController {
 
 
     @PostMapping(value="/create")
-   public ResponseEntity<Object>createNewCustomer(@RequestBody Customer customer){
+   public ResponseEntity<Customer>createNewCustomer(@RequestBody Customer customer){
 
         System.out.println("BaseController, createNewCustomer");
 
-        String newCustomername= customerService.createNewCustomer(customer);
+        Customer newCustomername= customerService.createNewCustomer(customer);
 
-        MessageFrontEnd message = new MessageFrontEnd("Customer: " + newCustomername+ "  created");
+//        MessageFrontEnd message = new MessageFrontEnd("Customer: " + newCustomername+ "  created");
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{customername}")
+//        hier adres op geven waar je customer kunt opvragen
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/customers/name/" + newCustomername.getCustomername())
                 .buildAndExpand(newCustomername).toUri();
 
-  return ResponseEntity.created(location).body(message);
+  return ResponseEntity.created(location).body(newCustomername);
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public interface CustomerService {
 
 
-    public abstract  String createNewCustomer(Customer customer);
+    public abstract Customer createNewCustomer(Customer customer);
 
     public abstract List<Customer> getAllCustomers();
 

@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.List;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +26,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private long id;
 
 
@@ -46,6 +49,8 @@ public class Customer {
     @Column(length = 255)
     private String tel_number;
 
+//    zorgt ervoor dat password niet in Json terecht komt, maar wel in de database
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false, length = 255)
     private String password;
 
@@ -55,9 +60,6 @@ public class Customer {
     @OneToMany (mappedBy = "customer")
     private List<Order> orders;
 
-    //  waarom is apikey nodig????
-    @Column
-    private String apikey;
 
 
 }

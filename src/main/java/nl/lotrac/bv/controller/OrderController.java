@@ -62,10 +62,10 @@ public class OrderController {
     }
 
 
-    @PutMapping(value="/update/{ordername")
+    @PutMapping(value="/update/{ordername}")
 
-    public ResponseEntity<Object>updateOrder(@PathVariable("/ordername") String ordername, @RequestBody Order order){
-
+    public ResponseEntity<Object>updateOrder(@PathVariable("ordername") String ordername, @RequestBody Order order){
+//public ResponseEntity<Object>updateOrder(@PathVariable("/update")String ordername, @RequestBody Order order){
 
         orderService.updateOrder(ordername,order);
         return ResponseEntity.noContent().build();

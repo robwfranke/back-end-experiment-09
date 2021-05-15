@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public String createNewCustomer(Customer customer) {
+    public Customer createNewCustomer(Customer customer) {
 
 
         System.out.println("CustomerService Impl create newCustomer");
@@ -33,10 +33,9 @@ public class CustomerServiceImpl implements CustomerService {
         if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)
             throw new NameExistsException("customer exists");
         String randomString = RandomStringGenerator.generateAlphaNumeric(20);
-        customer.setApikey(randomString);
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         Customer newCustomer = customerRepository.save(customer);
-        return (newCustomer.getCustomername());
+        return newCustomer;
 
     }
 

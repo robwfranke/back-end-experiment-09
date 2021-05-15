@@ -10,6 +10,7 @@ import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.OrderRepository;
 import nl.lotrac.bv.utils.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -26,6 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public String createNewOrder(Order order) {
+        var a =SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (orderRepository.getOrderByOrdername(order.getOrdername()) != null)
             throw new NameExistsException("order exists");
@@ -72,7 +74,7 @@ public class OrderServiceImpl implements OrderService {
 
 @Override
     public void updateOrder (String ordername, Order newOrder){
-    System.out.println("ordername"+ordername);
+    System.out.println("ordername");
     Order order = orderRepository.getOrderByOrdername(ordername);
 
     if (order == null)
