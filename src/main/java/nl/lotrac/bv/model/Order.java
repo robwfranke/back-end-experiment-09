@@ -38,7 +38,7 @@ public class Order {
 
     @JsonIgnore
     @ManyToOne
-    private Customer customer;
+    private User user;
 
     @OneToMany (mappedBy = "order")
     private List<OrderLine>orderLines;

@@ -3,17 +3,15 @@ package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.exceptions.NameExistsException;
 import nl.lotrac.bv.exceptions.NameNotFoundException;
-import nl.lotrac.bv.exceptions.RecordNotFoundException;
-import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.OrderRepository;
-import nl.lotrac.bv.utils.RandomStringGenerator;
+import nl.lotrac.bv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,13 +22,19 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public String createNewOrder(Order order) {
-        var a =SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userRepository.getUserByUsername(username);
 
         if (orderRepository.getOrderByOrdername(order.getOrdername()) != null)
             throw new NameExistsException("order exists");
+
+//        jpa weet nu, via de foreign key dat hier username komt te staan
+        order.setUser(user);
         order.setStatus("pending");
         Order newOrder = orderRepository.save(order);
         return (newOrder.getOrdername());
@@ -56,8 +60,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-
-
     //    in repository getOrderByOrdername
     @Override
     public Order getOneOrderByName(String ordername) {
@@ -72,28 +74,21 @@ public class OrderServiceImpl implements OrderService {
 //    public abstract void updateUser(String username, User user);
 
 
-@Override
-    public void updateOrder (String ordername, Order newOrder){
-    System.out.println("ordername");
-    Order order = orderRepository.getOrderByOrdername(ordername);
+    @Override
+    public void updateOrder(String ordername, Order newOrder) {
+        System.out.println("ordername");
+        Order order = orderRepository.getOrderByOrdername(ordername);
 
-    if (order == null)
-        throw new NameNotFoundException("order does not exists");
-
-
-
-    order.setStatus(newOrder.getStatus());
-
-    orderRepository.save(order);
+        if (order == null)
+            throw new NameNotFoundException("order does not exists");
 
 
-}
+        order.setStatus(newOrder.getStatus());
+
+        orderRepository.save(order);
 
 
-
-
-
-
+    }
 
 
 }

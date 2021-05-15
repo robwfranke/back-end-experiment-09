@@ -1,7 +1,5 @@
 package nl.lotrac.bv.controller;
 
-import nl.lotrac.bv.model.Customer;
-import nl.lotrac.bv.model.MessageFrontEnd;
 import nl.lotrac.bv.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

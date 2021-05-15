@@ -18,18 +18,13 @@ INSERT INTO authorities (username, authority_role) VALUES ('admin', 'ADMIN');
 -- ******************************************************************************
 
 
-INSERT INTO customers (customername, street,city, postal_code,email, tel_number,password, enabled) VALUES ('klant_1', 'hazenpad 1','Rotterdam', '1234AN', 'klant1@klant','0612345','$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
-INSERT INTO customers (customername, street,city, postal_code,email, tel_number,password, enabled) VALUES ('klant_2', 'konijn 1','Amsterdam', '5378AN', 'klant2@klant','0636545','$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
-INSERT INTO customers (customername, street,city, postal_code,email, tel_number,password, enabled) VALUES ('klant_3', 'paard 1','Rotterdam', '1357AN', 'klant3@klant','069684345','$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
-INSERT INTO customers (customername, street,city, postal_code,email, tel_number,password, enabled) VALUES ('klant_4', 'koe 1','Amsterdam', '7913AN', 'klant4@klant','089745','$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
 
 
 
-
-INSERT INTO orders (ordername, status, customer_id) VALUES ('order_1', 'open','2');
-INSERT INTO orders (ordername, status, customer_id) VALUES ('order_2', 'open','2');
-INSERT INTO orders (ordername, status, customer_id) VALUES ('order_3', 'pending','2');
-INSERT INTO orders (ordername, status, customer_id) VALUES ('order_4', 'closed','1');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_1', 'open','customer');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_2', 'open','customer');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_3', 'pending','customer');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_4', 'closed','customer');
 
 
 INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('1001',13,2);

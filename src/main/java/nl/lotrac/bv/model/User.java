@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -37,6 +38,9 @@ public class User {
 
     @OneToOne
     private Address address;
+
+    @OneToMany (mappedBy = "user")
+    private List<Order> orders;
 
 
     @OneToMany(
