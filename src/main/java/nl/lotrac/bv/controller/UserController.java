@@ -1,6 +1,7 @@
 package nl.lotrac.bv.controller;
 
 import nl.lotrac.bv.model.MessageFrontEnd;
+import nl.lotrac.bv.model.Role;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.exceptions.BadRequestException;
 import nl.lotrac.bv.service.UserService;
@@ -78,7 +79,7 @@ public class UserController {
     public ResponseEntity<Object> addUserAuthority(@PathVariable("username") String username, @RequestBody Map<String, Object> fields) {
         try {
             String authorityName = (String) fields.get("authority");
-            userService.addAuthority(username, authorityName);
+            userService.addAuthority(username, Role.valueOf(authorityName));
             return ResponseEntity.noContent().build();
         } catch (Exception ex) {
             throw new BadRequestException();
@@ -87,7 +88,7 @@ public class UserController {
 
     @DeleteMapping(value = "/{username}/authorities/{authority}")
     public ResponseEntity<Object> deleteUserAuthority(@PathVariable("username") String username, @PathVariable("authority") String authority) {
-        userService.removeAuthority(username, authority);
+        userService.removeAuthority(username, Role.valueOf(authority));
         return ResponseEntity.noContent().build();
     }
 

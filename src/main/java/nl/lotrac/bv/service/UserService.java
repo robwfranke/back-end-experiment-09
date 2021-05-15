@@ -1,6 +1,7 @@
 package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.model.Authority;
+import nl.lotrac.bv.model.Role;
 import nl.lotrac.bv.model.User;
 
 import java.util.Collection;
@@ -26,8 +27,8 @@ public interface UserService {
 
     public abstract Collection<User> getAllAuthorities();
     public abstract Set<Authority> getAuthorities(String username);
-    public abstract void addAuthority(String username, String authority);
-    public abstract void removeAuthority(String username, String authority);
+    public abstract void addAuthority(String username, Role authority);
+    public abstract void removeAuthority(String username, Role authority);
 
 
 }

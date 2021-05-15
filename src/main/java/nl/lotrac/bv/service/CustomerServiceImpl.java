@@ -3,6 +3,7 @@ package nl.lotrac.bv.service;
 import nl.lotrac.bv.exceptions.NameExistsException;
 import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.model.Customer;
+import nl.lotrac.bv.model.Role;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.CustomerRepository;
 import nl.lotrac.bv.utils.RandomStringGenerator;
@@ -35,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
     public User createNewCustomer(User user) {
 
         String newUser = userService.createUser(user);
-        userService.addAuthority(newUser, "ROLE_CUSTOMER");
+        userService.addAuthority(newUser, Role.CUSTOMER);
 
 
 

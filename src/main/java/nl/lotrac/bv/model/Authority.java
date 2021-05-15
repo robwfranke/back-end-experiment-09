@@ -28,12 +28,13 @@ public class Authority implements Serializable {
 
     @Id
     @Column(nullable = false)
-    private String authority;
+    @Enumerated (EnumType.STRING)
+    private Role authorityRole;
 
     public Authority() {}
-    public Authority(String username, String authority) {
+    public Authority(String username, Role authority) {
         this.username = username;
-        this.authority = authority;
+        this.authorityRole = authority;
     }
 
 }

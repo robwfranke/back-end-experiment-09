@@ -3,6 +3,7 @@ package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.exceptions.*;
 import nl.lotrac.bv.model.Authority;
+import nl.lotrac.bv.model.Role;
 import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.utils.RandomStringGenerator;
 
@@ -37,8 +38,6 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsById(user.getUsername()))
             throw new NameExistsException(user.getUsername() + "  exists!!");
         System.out.println("create user");
-        String randomString = RandomStringGenerator.generateAlphaNumeric(20);
-        user.setApikey(randomString);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User newUser = userRepository.save(user);
         return (newUser.getUsername());
@@ -63,11 +62,6 @@ public class UserServiceImpl implements UserService {
     public User getUser(String username) {
         System.out.println("UserServiceImpl getUser");
         User user = userRepository.getUserByUsername(username);
-
-        if (user == null)
-            throw new NameNotFoundException("user does not exists");
-
-
         return user;
     }
 
@@ -91,7 +85,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addAuthority(String username, String authority) {
+    public void addAuthority(String username, Role authority) {
         if (!userRepository.existsById(username)) throw new NameNotFoundException(username);
         User user = userRepository.findById(username).get();
         user.addAuthority(new Authority(username, authority));
@@ -99,10 +93,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void removeAuthority(String username, String authority) {
+    public void removeAuthority(String username, Role authority) {
         if (!userRepository.existsById(username)) throw new NameNotFoundException(username);
         User user = userRepository.findById(username).get();
-        Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthority().equalsIgnoreCase(authority)).findAny().get();
+        Authority authorityToRemove = user.getAuthorities().stream().filter((a) -> a.getAuthorityRole().equals(authority)).findAny().get();
         user.removeAuthority(authorityToRemove);
         userRepository.save(user);
     }

@@ -1,6 +1,7 @@
 package nl.lotrac.bv.config;
 
 import nl.lotrac.bv.filter.JwtRequestFilter;
+import nl.lotrac.bv.model.Role;
 import nl.lotrac.bv.service.CustomUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,10 +55,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/customers/**").hasRole("CUSTOMER")
-                .antMatchers("/orders/**").hasRole("CUSTOMER")
-                .antMatchers("/users/**").hasAnyRole("CUSTOMER","COMPANY-USER")
-                .antMatchers("/admin/**").hasAnyRole("CUSTOMER","COMPANY-USER","ADMIN")
+                .antMatchers("/customers/**").hasRole(Role.CUSTOMER.toString())
+                .antMatchers("/orders/**").hasRole(Role.CUSTOMER.toString())
+                .antMatchers("/users/**").hasAnyRole(Role.CUSTOMER.toString(),Role.COMPANY_USER.toString())
+                .antMatchers("/admin/**").hasAnyRole(Role.CUSTOMER.toString(),Role.COMPANY_USER.toString(),Role.ADMIN.toString())
                 .antMatchers("/authenticated").authenticated()
                 .antMatchers("/authenticate").permitAll()
                 .anyRequest().permitAll()

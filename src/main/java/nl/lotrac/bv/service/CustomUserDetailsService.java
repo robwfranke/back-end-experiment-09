@@ -26,18 +26,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-       User user = userService.getUser(username);
+        User user = userService.getUser(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
 
         String password = user.getPassword();
 
-//        Set<Authority> authorities = user.get().getAuthorities();
         Set<Authority> authorities = user.getAuthorities();
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (Authority authority: authorities) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
+        for (Authority authority : authorities) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + authority.getAuthorityRole().toString()));
         }
 
         return new org.springframework.security.core.userdetails.User(username, password, grantedAuthorities);

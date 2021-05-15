@@ -7,14 +7,14 @@ INSERT INTO users (username, password, enabled) VALUES ('admin', '$2y$12$STmgp8r
 -- ******************************************************************************
 
 -- ************************** authorities ****************************************
-INSERT INTO authorities (username, authority) VALUES ('customer', 'ROLE_CUSTOMER');
+INSERT INTO authorities (username, authority_role) VALUES ('customer', 'CUSTOMER');
 
-INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_CUSTOMER');
-INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_COMPANY-USER');
+INSERT INTO authorities (username, authority_role) VALUES ('user', 'CUSTOMER');
+INSERT INTO authorities (username, authority_role) VALUES ('user', 'COMPANY_USER');
 
-INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_CUSTOMER');
-INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_COMPANY-USER');
-INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_ADMIN');
+INSERT INTO authorities (username, authority_role) VALUES ('admin', 'CUSTOMER');
+INSERT INTO authorities (username, authority_role) VALUES ('admin', 'COMPANY_USER');
+INSERT INTO authorities (username, authority_role) VALUES ('admin', 'ADMIN');
 -- ******************************************************************************
 
 
