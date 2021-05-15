@@ -6,6 +6,7 @@ import nl.lotrac.bv.exceptions.NameNotFoundException;
 import nl.lotrac.bv.exceptions.RecordNotFoundException;
 import nl.lotrac.bv.model.Customer;
 import nl.lotrac.bv.model.Order;
+import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.repository.OrderRepository;
 import nl.lotrac.bv.utils.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,30 @@ public class OrderServiceImpl implements OrderService {
             throw new NameNotFoundException("order does not exists");
         return order;
     }
+
+//    public abstract void updateUser(String username, User user);
+
+
+@Override
+    public void updateOrder (String ordername, Order newOrder){
+    System.out.println("ordername"+ordername);
+    Order order = orderRepository.getOrderByOrdername(ordername);
+
+    if (order == null)
+        throw new NameNotFoundException("order does not exists");
+
+
+
+    order.setStatus(newOrder.getStatus());
+
+    orderRepository.save(order);
+
+
+}
+
+
+
+
 
 
 

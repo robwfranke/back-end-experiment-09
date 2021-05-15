@@ -1,8 +1,7 @@
 package nl.lotrac.bv.controller;
 
-import nl.lotrac.bv.model.Customer;
-import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.model.MessageFrontEnd;
+import nl.lotrac.bv.model.Order;
 import nl.lotrac.bv.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.security.PublicKey;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -62,6 +60,18 @@ public class OrderController {
     public ResponseEntity<Object> getOneOrderByName(@PathVariable("ordername") String ordername) {
         return ResponseEntity.ok().body(orderService.getOneOrderByName(ordername));
     }
+
+
+    @PutMapping(value="/update/{ordername")
+
+    public ResponseEntity<Object>updateOrder(@PathVariable("/ordername") String ordername, @RequestBody Order order){
+
+
+        orderService.updateOrder(ordername,order);
+        return ResponseEntity.noContent().build();
+
+    }
+
 
 
 

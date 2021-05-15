@@ -16,4 +16,6 @@ public interface OrderService {
     //    in repository getOrderByOrdername
     public abstract Order getOneOrderByName(String order);
 
+
+    public abstract void updateOrder(String ordername, Order order);
 }
