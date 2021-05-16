@@ -21,6 +21,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+// CUSTOMER, COMPANY_USER, ADMIN
 
     @PostMapping(value="/create")
     public ResponseEntity<Object>createNewOrder(@RequestBody Order order){
@@ -38,7 +39,7 @@ public class OrderController {
 
 
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/user_admin")
     public ResponseEntity<Object> getAllOrders() {
 
         return ResponseEntity.ok().body(orderService.getAllOrders());
