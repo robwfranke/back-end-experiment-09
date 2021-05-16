@@ -2,6 +2,7 @@
 -- ************************** users ****************************************
 
 INSERT INTO users (username, password, enabled) VALUES ('customer', '$2y$12$OTdFbEe9EqmvLJIVQrEf6OWO8AUagdfitwfVXVBefWv7C9hWAX9oG', TRUE);/*password: customer */
+INSERT INTO users (username, password, enabled) VALUES ('rob', '$2a$10$Tc5D3zX6Ilabdc80lj6bLO/zuI8TQueM7UC8WHghPxBvH/SOl1pGu', TRUE);/*password: 123456 */
 INSERT INTO users (username, password, enabled) VALUES ('user', '$2y$12$ib7HLC5a/du7UNFgRggGteXvr0SyclZiMSwdMXXZ1uwYyzFfBTkV.', TRUE);/*password: user */
 INSERT INTO users (username, password, enabled) VALUES ('admin', '$2y$12$STmgp8r1FxIQpmOlD9osTuAnYZQ4s8qahccMT.vgatkEE6I8ev8s.', TRUE);/*password: admin */
 -- ******************************************************************************
@@ -25,6 +26,11 @@ INSERT INTO orders (ordername, status, user_username) VALUES ('order_1', 'open',
 INSERT INTO orders (ordername, status, user_username) VALUES ('order_2', 'open','customer');
 INSERT INTO orders (ordername, status, user_username) VALUES ('order_3', 'pending','customer');
 INSERT INTO orders (ordername, status, user_username) VALUES ('order_4', 'closed','customer');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_51', 'open','rob');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_52', 'open','rob');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_53', 'open','rob');
+INSERT INTO orders (ordername, status, user_username) VALUES ('order_54', 'open','rob');
+
 
 
 INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('1001',13,2);
