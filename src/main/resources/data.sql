@@ -34,10 +34,10 @@ INSERT INTO orders (ordername, status, fk_user) VALUES ('order_54', 'open','rob'
 
 
 
-INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('1001',13,2);
-INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('2001', 1,2);
-INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('3001', 3,2);
-INSERT INTO order_lines (itemname, quantity, order_id) VALUES ('4001', 6,1);
+INSERT INTO order_lines (itemname, quantity, fk_order) VALUES ('1001',13,2);
+INSERT INTO order_lines (itemname, quantity, fk_order) VALUES ('2001', 1,2);
+INSERT INTO order_lines (itemname, quantity, fk_order) VALUES ('3001', 3,2);
+INSERT INTO order_lines (itemname, quantity, fk_order) VALUES ('4001', 6,1);
 --
 --
 -- INSERT INTO jobs (job_name, department) VALUES ('voordraaien', 'draai afdeling');

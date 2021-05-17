@@ -21,7 +21,6 @@ import java.util.List;
 public class OrderLine {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -32,12 +31,10 @@ public class OrderLine {
     @Column
     private Integer quantity;
 
-@JsonIgnore
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "fk_order")
     private Order order;
-
-
-
 
 
 }

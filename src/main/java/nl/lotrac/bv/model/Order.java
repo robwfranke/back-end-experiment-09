@@ -41,7 +41,8 @@ public class Order {
     @JoinColumn(name="fk_user")
     private User user;
 
-    @OneToMany (mappedBy = "order")
+    @OneToMany
+    @JoinColumn(name="fk_order")
     private List<OrderLine>orderLines;
 
 }
