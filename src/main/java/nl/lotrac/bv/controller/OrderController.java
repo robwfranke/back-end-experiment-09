@@ -2,7 +2,6 @@ package nl.lotrac.bv.controller;
 
 import nl.lotrac.bv.model.MessageFrontEnd;
 import nl.lotrac.bv.model.Order;
-import nl.lotrac.bv.model.User;
 import nl.lotrac.bv.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
