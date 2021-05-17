@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>nl.gettoworktogether</groupId>
-	<artifactId>security_with_jwt</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<groupId>nl.lotrac.bv</groupId>
+	<artifactId>eindopdracht</artifactId>
+	<version>Ex9</version>
 
-	<name>security_with_users_table</name>
-	<description>Demo project for Spring Security</description>
+	<name>rfr</name>
+	<description>Eindopdracht NOVI</description>
 
 	<properties>
 		<java.version>11</java.version>

@@ -16,6 +16,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" />
+          <factory-entry name="security_rob" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
