@@ -38,6 +38,7 @@ public class Order {
 
     @JsonIgnore
     @ManyToOne
+    @JoinColumn(name="fk_user")
     private User user;
 
     @OneToMany (mappedBy = "order")

@@ -39,7 +39,8 @@ public class User {
     @OneToOne
     private Address address;
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany
+    @JoinColumn(name = "fk_user")
     private List<Order> orders;
 
 

@@ -22,14 +22,14 @@ INSERT INTO authorities (username, authority_role) VALUES ('admin', 'ADMIN');
 
 
 
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_1', 'open','customer');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_2', 'open','customer');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_3', 'pending','customer');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_4', 'closed','customer');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_51', 'open','rob');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_52', 'open','rob');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_53', 'open','rob');
-INSERT INTO orders (ordername, status, user_username) VALUES ('order_54', 'open','rob');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_1', 'open','customer');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_2', 'open','customer');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_3', 'pending','customer');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_4', 'closed','customer');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_51', 'open','rob');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_52', 'open','rob');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_53', 'open','rob');
+INSERT INTO orders (ordername, status, fk_user) VALUES ('order_54', 'open','rob');
 
 
 
