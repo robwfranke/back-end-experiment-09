@@ -64,7 +64,6 @@ public class OrderController {
     @GetMapping(value = "/inlog")
 
     public ResponseEntity<Object> getAllordersByInlogNameOnly() {
-        System.out.println("/test");
         String user = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         List<Order> orders = orderService.getAllOrdersByUser(user);
 
