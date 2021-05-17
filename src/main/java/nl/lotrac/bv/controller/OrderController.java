@@ -46,14 +46,15 @@ public class OrderController {
     }
 
     //*************************************************************************************
-//    @GetMapping(value = "/proef/{username}")
-//    public ResponseEntity<Object> getOrdersC(@PathVariable("username") String username) {
-//
-//
-//        List<Order> orders = orderService.getAllByUser(username);
-//
-//        return ResponseEntity.ok().body(orderService.getAllByUser());
-        //*************************************************************************************
+    @GetMapping(value = "/proef/{username}")
+    public ResponseEntity<Object> getOrdersC(@PathVariable("username") String username) {
+
+
+        List<Order> orders = orderService.getAllByUser(username);
+
+        return ResponseEntity.ok().body(orders);
+    }
+ //*************************************************************************************
 
 
         @GetMapping(value = "/{id}")

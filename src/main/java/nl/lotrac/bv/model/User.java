@@ -39,9 +39,11 @@ public class User {
     @OneToOne
     private Address address;
 
+
     @OneToMany
     @JoinColumn(name = "fk_user")
     private List<Order> orders;
+
 
 
     @OneToMany(

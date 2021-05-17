@@ -18,7 +18,7 @@ public interface UserService {
 
     public abstract void updateUser(String username, User user);
 
-//    public abstract void deleteUser(String username);
+    public abstract void deleteUser(String username);
 
     public abstract Collection<User> getUsers();
 
@@ -30,6 +30,4 @@ public interface UserService {
     public abstract Set<Authority> getAuthorities(String username);
     public abstract void addAuthority(String username, Role authority);
     public abstract void removeAuthority(String username, Role authority);
-
-
 }

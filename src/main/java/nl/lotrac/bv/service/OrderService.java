@@ -12,9 +12,7 @@ public interface OrderService {
 
     public abstract List<Order> getAllOrders();
 
-//    ***************************************
     public abstract List<Order> getAllByUser(String username);
-//    ***************************************
 
 
     public abstract Order getOneOrderByID(Long id);
