@@ -61,15 +61,12 @@ public class OrderController {
 
 
     //*************************************************************************************
-    @GetMapping(value = "/test")
+    @GetMapping(value = "/inlog")
 
-//    public ResponseEntity<Object> getAllordersByInlognameOnly(@PathVariable("/test") String username) {
     public ResponseEntity<Object> getAllordersByInlogNameOnly() {
-
-        String userPiet = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-//        User user = userRepository.getUserByUsername(username);
-
-        List<Order> orders = orderService.getAllOrdersByUser(userPiet);
+        System.out.println("/test");
+        String user = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        List<Order> orders = orderService.getAllOrdersByUser(user);
 
         return ResponseEntity.ok().body(orders);
     }

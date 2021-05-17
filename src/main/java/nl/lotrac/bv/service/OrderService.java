@@ -14,10 +14,6 @@ public interface OrderService {
 
     public abstract List<Order> getAllOrdersByUser(String username);
 
-//    public abstract List<Order> getAllordersByInlognameOnly(String username);
-
-
-
 
     public abstract Order getOneOrderByID(Long id);
 

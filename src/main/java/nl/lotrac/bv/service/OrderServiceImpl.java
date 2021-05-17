@@ -61,24 +61,6 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-//
-//    public List<Order> getAllordersByInlognameOnly(String username){
-//        System.out.println("stop");
-//        User user = userRepository.getUserByUsername("rob");
-//        return user.getOrders();
-
-//    String pietname = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-//    User user = userRepository.getUserByUsername(pietname);
-//    return user.getOrders();
-//
-//}
-
-
-
-
-
-
-
 
 
     @Override
