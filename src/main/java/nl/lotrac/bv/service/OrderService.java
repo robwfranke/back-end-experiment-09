@@ -1,6 +1,7 @@
 package nl.lotrac.bv.service;
 
 import nl.lotrac.bv.model.Order;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -11,6 +12,11 @@ public interface OrderService {
 
     public abstract List<Order> getAllOrders();
 
+//    ***************************************
+    public abstract List<Order> getAllByUser(String username);
+//    ***************************************
+
+
     public abstract Order getOneOrderByID(Long id);
 
     //    in repository getOrderByOrdername
@@ -18,4 +24,7 @@ public interface OrderService {
 
 
     public abstract void updateOrder(String ordername, Order order);
+
+
+
 }

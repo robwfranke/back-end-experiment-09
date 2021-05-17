@@ -7,16 +7,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+
+
 @RestController
 @RequestMapping(value = "/admin")
 
 
 public class
 AdminController {
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value = "")
     public ResponseEntity<Object> getMessage() {
         return new ResponseEntity<>("SECURED REST endpoint: /admin", HttpStatus.OK);
     }
+
+
+
+
+
+
 
 }
