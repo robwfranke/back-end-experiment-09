@@ -7,6 +7,8 @@ import nl.lotrac.bv.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -39,22 +41,42 @@ public class OrderController {
     }
 
 
-    @GetMapping(value = "/user_admin")
+    @GetMapping(value = "")
     public ResponseEntity<Object> getAllOrders() {
 
         return ResponseEntity.ok().body(orderService.getAllOrders());
     }
 
     //*************************************************************************************
-    @GetMapping(value = "/proef/{username}")
-    public ResponseEntity<Object> getOrdersC(@PathVariable("username") String username) {
+    @GetMapping(value = "/ordersByCustomer/{username}")
+    public ResponseEntity<Object> getAllordersByCustomer(@PathVariable("username") String username) {
 
 
-        List<Order> orders = orderService.getAllByUser(username);
+        List<Order> orders = orderService.getAllOrdersByUser(username);
 
         return ResponseEntity.ok().body(orders);
     }
  //*************************************************************************************
+
+
+
+    //*************************************************************************************
+    @GetMapping(value = "/test")
+
+//    public ResponseEntity<Object> getAllordersByInlognameOnly(@PathVariable("/test") String username) {
+    public ResponseEntity<Object> getAllordersByInlogNameOnly() {
+
+        String userPiet = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+//        User user = userRepository.getUserByUsername(username);
+
+        List<Order> orders = orderService.getAllOrdersByUser(userPiet);
+
+        return ResponseEntity.ok().body(orders);
+    }
+    //*************************************************************************************
+
+
+
 
 
         @GetMapping(value = "/{id}")

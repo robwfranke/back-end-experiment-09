@@ -32,10 +32,6 @@ public class CustomerServiceImpl implements CustomerService {
         String newUser = userService.createUser(user);
         userService.addAuthority(newUser, Role.CUSTOMER);
 
-
-
-
-
         System.out.println("CustomerService Impl create newCustomer");
 
 //        if (customerRepository.getCustomerByCustomername(customer.getCustomername()) != null)

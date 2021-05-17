@@ -9,6 +9,7 @@ INSERT INTO users (username, password, enabled) VALUES ('admin', '$2y$12$STmgp8r
 
 -- ************************** authorities ****************************************
 INSERT INTO authorities (username, authority_role) VALUES ('customer', 'CUSTOMER');
+INSERT INTO authorities (username, authority_role) VALUES ('rob', 'CUSTOMER');
 
 INSERT INTO authorities (username, authority_role) VALUES ('user', 'CUSTOMER');
 INSERT INTO authorities (username, authority_role) VALUES ('user', 'COMPANY_USER');
